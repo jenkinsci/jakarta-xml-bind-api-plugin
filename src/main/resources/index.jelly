@@ -1,0 +1,4 @@
+<?jelly escape-by-default='true'?>
+<div>
+  This plugin provides the <a href="https://eclipse-ee4j.github.io/jaxb-ri/">Jakarta XML Binding</a> API for other plugins.
+</div>
