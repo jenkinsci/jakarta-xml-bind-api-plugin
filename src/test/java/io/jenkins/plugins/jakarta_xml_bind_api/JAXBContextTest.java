@@ -16,7 +16,6 @@ import jenkins.util.SetContextClassLoader;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.jvnet.hudson.test.JenkinsRule;
-import org.jvnet.hudson.test.RealJenkinsRule;
 import org.jvnet.hudson.test.junit.jupiter.RealJenkinsExtension;
 
 class JAXBContextTest {
@@ -34,7 +33,7 @@ class JAXBContextTest {
         book.setId(1L);
         book.setName("Guide to JAXB");
         JAXBContext context;
-        try (SetContextClassLoader sccl = new SetContextClassLoader(RealJenkinsRule.Endpoint.class)) {
+        try (SetContextClassLoader sccl = new SetContextClassLoader(r.getPluginManager().uberClassLoader)) {
             context = JAXBContext.newInstance(Book.class);
         }
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
